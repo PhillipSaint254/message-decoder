@@ -1,4 +1,4 @@
-- A very file-based message decoder
+- This code contains a file-based message decoder
 - It receives a text file with the message for decoding
 - Seperates the keys from values by spliting each line whenever a space character is found
 - After sorting the keys in a descending order, the code creates a pyramid with the list of keys as an input
