@@ -21,7 +21,7 @@ def decode(message_file):
 
     pyramid = create_pyramid(sorted_values)
 
-    display_pyramid(pyramid)
+    # display_pyramid(pyramid)  # To optionally display the pyramid
 
     message = ""
 
@@ -35,10 +35,10 @@ def create_pyramid(numbers):
     pyramid = []
     row_length = 1
     current_index = 0
-    while current_index < len(numbers):
+    while current_index < len(numbers):  # whole pyramid iterator
         row = [str(numbers[current_index])]
         current_index += 1
-        for j in range(1, row_length):
+        for j in range(1, row_length):  # line | row iterator
             if current_index < len(numbers):
                 row.append(str(numbers[current_index]))
                 current_index += 1
