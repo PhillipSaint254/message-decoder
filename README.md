@@ -1,0 +1,5 @@
+- A very simple-structured message decoder
+- It stores the keys for decoding and it's values in a dictionary
+- Seperates the keys from values by spliting each line whenever a space character is found
+- It reads a message file with an encoded pyramid-structered numerical message
+- It matches the last number in each line of the file to the key-value dictionary to decode the message 
