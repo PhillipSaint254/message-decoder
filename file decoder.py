@@ -1,5 +1,3 @@
-
-
 def read_pattern(message_file):  # Speration of pattern reading function
     dictionary = dict()
 
@@ -17,19 +15,43 @@ def read_pattern(message_file):  # Speration of pattern reading function
 
 
 def decode(message_file):
+    dictionary = read_pattern(message_file)
 
-    dictionary = read_pattern("pattern.txt")
+    sorted_values = sorted(dictionary.keys())
 
-    with open(message_file, 'r') as file:
-        file_lines = file.readlines()
-        message = ''
+    pyramid = create_pyramid(sorted_values)
 
-        for line in file_lines:
-            # take the last number of each line for message decode
-            key = line.strip().split(" ")[-1]
-            message += dictionary[key] + ' '
+    display_pyramid(pyramid)
 
-        return message
+    message = ""
+
+    for line in pyramid:
+        message += dictionary[line[-1]] + ' '
+
+    return message
 
 
-print(f"Decoded message: {decode('test.txt')}")
+def create_pyramid(numbers):
+    pyramid = []
+    row_length = 1
+    current_index = 0
+    while current_index < len(numbers):
+        row = [str(numbers[current_index])]
+        current_index += 1
+        for j in range(1, row_length):
+            if current_index < len(numbers):
+                row.append(str(numbers[current_index]))
+                current_index += 1
+            else:
+                break
+        pyramid.append(row)
+        row_length += 1
+    return pyramid
+
+
+def display_pyramid(pyramid):
+    for row in pyramid:
+        print(" ".join(row).center(len(pyramid[-1]) * 2))
+
+
+print(f"Decoded message: {decode('pattern.txt')}")
